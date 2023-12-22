@@ -13,7 +13,25 @@ class ProductController extends Controller
         return view('products.create');
     }
     public function store(Request $request){
-        // return view('products.store');
-        dd($request->all());
+        // validation data 
+        $request->validate([
+            'name' => 'required',
+            'descriptin' => 'required',
+            'image' => 'required|mimes:jpeg,jpg,png,gif|max:10000'
+        ]);
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('products'), $imageName);
+    
+        $product = new ProductController;
+    
+        $product->image = $imageName;
+        $product->name = $request->name;
+        $product->description = $request->description;
+    
+        // $product->save();
+        // $product->save();
+    
+        return back();
     }
+    
 }

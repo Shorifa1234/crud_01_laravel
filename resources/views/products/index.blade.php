@@ -24,7 +24,7 @@
         <div class="text-right">
             <a href="products/create" class="btn btn-dark mt-2">New Products</a>
         </div>
-        <h1>Products</h1>
+        
     </div>
 </body>
 </html>
