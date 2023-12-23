@@ -21,6 +21,13 @@ Route::get('/', function () {
 Route::get('/',[ProductController::class,'index'])->name('products.index');
 Route::get('/products/create',[ProductController::class,'create'])->name('products.create');
 Route::post('/products/store',[ProductController::class,'store'])->name('products.store');
+// Example routes in web.php
+Route::get('/products/{id}/edit', [ProductController::class,'edit'])->name('products.edit');
+Route::post('/products/{id}', [ProductController::class,'update'])->name('products.update');
+Route::get('/products/{id}', [ProductController::class,'update'])->name('products.destroy');
+
+// Route::put('product/{id}/update', [ProductController::class, 'update']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
