@@ -66,11 +66,16 @@ class ProductController extends Controller
 
         return back()->withSuccess('Product updated successfully!');
     }
-    public function destroy($id){
-        $product = Product::where('id',$id)=>first();
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
         $product->delete();
         return back()->withSuccess('Product deleted successfully!');
-
     }
-     
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.show',['product'=>$product]);
+        // return back()->withSuccess('Product deleted successfully!');
+    }
 }
